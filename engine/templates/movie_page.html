@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+{% load m_filter %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../static/styles/info.css">
+    <link rel="stylesheet" href="../static/styles/searchbar.css">
+    <link rel="stylesheet" href="../static/styles/card.css">
+</head>
+<body>
+    <div id="header">
+        <div class="navbar">
+            <img class="navbar-left" src="../static/images/icon.png">
+            <div class="navbar-search">
+                <form action="search?" method="get" id="inp-form">
+                    <fieldset>
+                        <div style="display: flex">
+                            <div class="category">
+                                <select  name="type">
+                                    <option value="movie">电影</option>
+                                    <option value="actor">演员</option>
+                                    <option value="comment">影评</option>
+                                </select>
+                            </div>
+                            <div class="inp">
+                                <input name="search_text" maxlength="60" placeholder="搜索电影、演员、影评" value autocomplete='off' size="40">
+                            </div>
+                            <div class="inp-btn">
+                                <input type="submit" value="">
+                            </div>
+                        </div>
+                    </fieldset>
+                </form>
+            </div>
+            <ul class="narbar-right">
+                <li>
+                    <a class="active" href="display?type=movie">电影</a>
+                </li>
+                <li>
+                    <a class="" href="display?type=actor">演员</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div style="align-items: center;" >
+        <div class="page">
+            <div id="db_head">
+                <div class="db_coverout">
+                    <div class="db_coverinner">
+                        <div class="db_coverpicbox">
+                            <div class="db_cover">
+                                <img src="../static/images/movie_pics/{{ object.id }}.jpg">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="db_ihead">
+                    <div class="db_head">
+                        <div class="clearfix">
+                            <h1 style="font-size:35px;">{{ object.title }}</h1>
+                        </div>
+                        <div class="otherbox">
+                            <span>
+                                {% if object.length != "" %}
+                                {{ object.length|replace_comma }} -
+                                {% endif %}
+                                {% if object.categories != None %}
+                                {{ object.categories|replace_comma }} -
+                                {% endif %}
+                                {% if object.dates != None %}
+                                {{ object.dates|replace_comma }}
+                                {% endif %}
+                            </span>
+                        </div>
+                        <div class="news_area">
+                            <div class="clearfix">
+                                <div class="grade_tool">
+                                    <div class="gradebox">
+                                        <b>{{ object.rate|get_integral }}<sup>.{{ object.rate|get_decimal }}</sup></b>
+                                        <p>总分：10</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="db_cont">
+                                <div class="base_r">
+                                    <dl class="info">
+                                        {% if object.diretors != "" %}
+                                        <dd><strong>导演：</strong>
+                                            <span>{{ object.diretors|replace_comma }}</span>
+                                        </dd>
+                                        {% endif %}
+                                        {% if object.scriptwriters != "" %}
+                                        <dd><strong>编剧：</strong>
+                                            <span>{{ object.scriptwriters|replace_comma }}</span>
+                                        </dd>
+                                        {% endif %}
+                                        {% if object.country != None %}
+                                        <dd>
+                                            <strong>国家地区：</strong>
+                                            <span>{{ object.country|replace_comma }}</span>
+                                        </dd>
+                                        {% endif %}
+                                        {% if object.language != None %}
+                                        <dd>
+                                            <strong>语言：</strong>
+                                            <span>{{ object.language|replace_comma }}</span>
+                                        </dd>
+                                        {% endif %}
+                                        {% if object.other_names != None%}
+                                        <dd>
+                                            <strong>别名：</strong>
+                                            <span>{{ object.other_names|replace_comma }}</span>
+                                        </dd>
+                                        {% endif %}
+                                        <dd>
+                                            <strong>豆瓣链接：</strong>
+                                            <a href="{{object.url}}">{{ object.title }}</a>
+                                        </dd>
+                                        <dd>
+                                            <strong>IMDb链接：</strong>
+                                            <a href="{{object.IMDb}}">{{ object.title }}</a>
+                                        </dd>
+                                    </dl>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container" style="margin-top:340px">
+            {% if object.summary != "" %}
+                <div class="panel panel-warning">
+                    <div class="panel-heading">
+                        <span style="font-size: 20px">剧情简介</span>
+                    </div>
+                <div class="panel-body">
+                    <p class="summary">{{ object.summary|replace_br|linebreaksbr }}</p>
+                </div>
+                </div>
+            {% endif %}
+            <div class="panel panel-warning">
+                <div class="panel-heading">
+                    <span style="font-size: 20px">参演演员</span>
+                </div>
+                <div class="panel-body">
+                    <div style="display: grid;grid-template-columns: repeat(auto-fill, 220px);">
+                        {% for item in lst1%}
+                            <div class="m_card" style="width: 180px; height:260px; margin-top: 10px;margin-bottom: 10px">
+                                <div class="card-pic">
+                                    <a class="pic-link" href="detail?type=actor&id={{ item.id }}">
+                                        <div class="pic" style="width: 100%;">
+                                            {% if item.has_img %}
+                                                <img src="../static/images/actor_pics/{{ item.id }}.jpg" width="100%" height=210px>
+                                            {% else %}
+                                                <img src="../static/images/actor_pics/0.jpg" width="100%" height=210px>
+                                            {% endif %}
+                                        </div>
+                                    </a>
+                                </div>
+                                <a class="card-title" href="detail?type=actor&id={{ item.id }}">
+                                    <span class="title">{{ item.name }}</span>
+                                </a>
+                            </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+            <div class="panel panel-warning">
+                <div class="panel-heading">
+                    <span style="font-size: 20px">精选评论</span>
+                </div>
+                <div class="panel-body">
+                    <div class="longcombox">
+                        {% for item in lst2 %}
+                            <dl>
+                                <dt>
+                                    <span>TOP</span>
+                                    <strong>{{ forloop.counter }}</strong>
+                                </dt>
+                                <dd>
+                                    <h3>{{ item.description|get_first_sentence }}</h3>
+                                </dd>
+                                <dd class="clearfix" style="margin-top: 20px">
+                                    <div class="comboxcont clearfix">
+                                        <p>{{ item.description }}</p>
+                                    </div>
+                                </dd>
+                            </dl>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

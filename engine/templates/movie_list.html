@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+    <head>
+        <title>影视列表页</title>
+        <meta name="author" content="姚季涵">
+        <meta name="description" content="This is a simple search engine for douban movies">
+        <meta charset="utf-8">
+        <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
+        <link type="text/css" rel="stylesheet" href="../static/styles/searchbar.css">
+        <link type="text/css" rel="stylesheet" href="../static/styles/pages.css">
+        <link type="text/css" rel="stylesheet" href="../static/styles/card.css">
+        <link type="text/css" rel="stylesheet" href="../static/styles/title.css">
+    </head>
+    <body>
+        <div id="header">
+            <div class="navbar">
+                <img class="navbar-left" src="../static/images/icon.png">
+                <div class="navbar-search">
+                    <form action="search?" method="get" id="inp-form">
+                        <fieldset>
+                            <div style="display: flex">
+                                <div class="category">
+                                    <select  name="type">
+                                        <option value="movie">电影</option>
+                                        <option value="actor">演员</option>
+                                        <option value="comment">影评</option>
+                                    </select>
+                                </div>
+                                <div class="inp">
+                                    <input name="search_text" maxlength="60" placeholder="搜索电影、演员、影评" value autocomplete='off' size="40">
+                                </div>
+                                <div class="inp-btn">
+                                    <input type="submit" value="">
+                                </div>
+                            </div>
+                        </fieldset>
+                    </form>
+                </div>
+                <ul class="narbar-right">
+                    <li>
+                        <a class="active" href="display?type=movie">电影</a>
+                    </li>
+                    <li>
+                        <a class="" href="display?type=actor">演员</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="container" style="margin: 50px 100px 50px 100px; align-items: center;">
+            <div class="ipc-title">
+                <h3 class="ipc-title-text">&nbsp 热门推荐
+                    <svg width="24" height="24" class="arow" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M5.622.631A2.153 2.153 0 0 0 5 2.147c0 .568.224 1.113.622 1.515l8.249 8.34-8.25 8.34a2.16 2.16 0 0 0-.548 2.07c.196.74.768 1.317 1.499 1.515a2.104 2.104 0 0 0 2.048-.555l9.758-9.866a2.153 2.153 0 0 0 0-3.03L8.62.61C7.812-.207 6.45-.207 5.622.63z"></path>
+                    </svg>
+                </h3>
+                <div class="ipc-title-description">豆瓣欧美电影Top1000</div>
+            </div>
+            <div style="display: grid;grid-template-columns: repeat(auto-fill, 220px);">
+                {% for item in results %}
+                    <div class="m_card" style="width: 180px;height: 310px;margin: 30px 30px 30px 30px">
+                        <div class="card-pic">
+                            <a class="pic-link" href="detail?type={{ type }}&id={{ item.id }}">
+                                <div class="pic" style="width: 100%;">
+                                    <img src="../static/images/movie_pics/{{ item.id }}.jpg" width="100%" height="250px">
+                                </div>
+                            </a>
+                        </div>
+                        <div class="card-rate">
+                            <svg width="24" height="24" class="star" viewBox="0 0 24 24" fill='rgb(245,197,24'>
+                            <path d="M12 20.1l5.82 3.682c1.066.675 2.37-.322 2.09-1.584l-1.543-6.926 5.146-4.667c.94-.85.435-2.465-.799-2.567l-6.773-.602L13.29.89a1.38 1.38 0 0 0-2.581 0l-2.65 6.53-6.774.602C.052 8.126-.453 9.74.486 10.59l5.147 4.666-1.542 6.926c-.28 1.262 1.023 2.26 2.09 1.585L12 20.099z"></path>
+                            </svg><span class="rate">{{ item.rate }}</span>
+                        </div>
+                        <a class="card-title" href="detail?type={{ type }}&id={{ item.id }}">
+                            <span class="title">{{item.title}}</span>
+                        </a>
+                    </div>
+                {% endfor %}
+            </div>
+            <div id="page" >
+                <div class="page-inner">
+                    {% if results.has_previous %}
+                        <a href="display?type={{ type }}&page={{ results.previous_page_number }}" class="light">&lt</a>
+                    {% else %}
+                        <strong>&lt</strong>
+                    {% endif %}
+                    {% if 1 not in pageRange%}
+                        <a href="display?type={{ type }}&page=1" class="light">1</a>
+                        <span class = "depart">▪••</span>
+                    {% endif %}
+                    {% for i in pageRange %}
+                        {% if page == i %}
+                            <strong>{{ i }}</strong>
+                        {% else %}
+                            <a href="display?type={{ type }}&page={{ i }}" class="light">{{ i }}</a>
+                        {% endif %}
+                    {% endfor %}
+                    {% if paginator.num_pages not in pageRange%}
+                        <span class = "depart">▪••</span>
+                        <a href="display?type={{ type }}&page={{ paginator.num_pages }}" class="light">{{ paginator.num_pages }}</a>
+                    {% endif %}
+                    {% if results.has_next %}
+                        <a href="display?type={{ type }}&page={{ results.next_page_number }}" class="light">&gt</a>
+                    {% else %}
+                        <strong>&gt</strong>
+                    {% endif %}
+                    <span class = "depart">跳至</span>
+                    <form class="depart" method="get" action="" id="page_form">
+                        <input name="type" style="display: none" id="page_type">
+                        <input name="page" maxlength="3" value autocomplete='off' onkeydown="_submit()">
+                        <script>
+                            function _submit(){
+                                if (event.keyCode == 13){
+                                    document.getElementById("page_type").value = "{{ type }}"
+                                    document.getElementById("page_form").submit()
+                                }
+                            }
+                        </script>
+                    </form>
+                    <span class = "depart">页</span>
+                </div>
+            </div>
+        </div>
+
+    </body>
+</html>

@@ -1,0 +1,8 @@
+body .container{
+    margin: 50px 50px 50px 50px;
+    align-items: center;
+}
+body .container .ipc-items{
+    display: grid;
+    grid-template-columns: repeat(auto-fill, 220px);
+}

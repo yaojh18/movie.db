@@ -1,0 +1,119 @@
+body{
+    background-color: #f9f9f9;
+    margin: 0;
+    padding: 0;
+}
+
+#header{
+    background-color: #ffc4a7;
+    width: 100%;
+    height: 70px;
+    border-bottom: 1px solid #e9e9e9;
+    float: top;
+    top: 0;
+    left: 0;
+    z-index: 50;
+}
+
+.navbar{
+    margin: 4px 20px;
+    display: block;
+}
+
+.navbar-left{
+    float: left;
+    width: 60px;
+}
+
+.narbar-right{
+    float: right;
+}
+
+.navbar li{
+    list-style-type: none;
+    margin: 15px 10px 15px 10px;
+    display: inline-block;
+}
+
+.navbar li .active{
+    color: #ff7d0a;
+}
+
+.navbar a{
+    font-size: 16px;
+    font-weight: 800;
+    color: #636363;
+    text-decoration: none;
+}
+
+.navbar a:hover{
+    color: #ee7204;
+}
+
+.navbar-search {
+    margin-left: 150px;
+    overflow: visible;
+    padding: 10px 0 15px 0;
+    display: inline-block;
+}
+
+.navbar-search .inp {
+    width: 470px;
+    height: 30px;
+    cursor: text;
+}
+.navbar-search .inp-btn {
+    width: 40px;
+    height: 40px;
+    overflow: hidden;
+}
+.navbar-search fieldset {
+    border: none;
+    padding: 0;
+    margin: 0;
+}
+.navbar-search .inp input {
+    background: #fff;
+    width: 96%;
+    text-align: left;
+    height: 40px;
+    padding-left: 10px;
+    outline: none;
+    border-radius: 10px;
+    font-size: 16px;
+}
+.navbar-search .inp-btn input {
+    margin-top: 3px;
+    width: 80%;
+    height: 80%;
+    font-size: 0;
+    overflow: hidden;
+    background-color: transparent;
+    cursor: pointer;
+    border: none;
+    background-image: url("../images/search.svg");
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+}
+.navbar-search .category{
+    width: 60px;
+    height: 40px;
+    margin: 0 20px 0 10px;
+    background-color: #ff7d0a;
+    border: 2px solid #ffe49e;
+    border-radius: 10px;
+    cursor:pointer;
+    font-size: 16px;
+}
+.navbar-search .category select{
+    width:100%;
+    height:40px;
+    background-color: transparent;
+    color: white;
+    border: 0;
+    cursor:pointer;
+    outline:none
+}
+.navbar-search .category select option{
+    color:black;
+}

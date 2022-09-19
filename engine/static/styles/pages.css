@@ -1,0 +1,61 @@
+.page-inner{
+    padding: 14px 0 14px 140px;
+    display: block;
+    background-color: #f5f5f6;
+}
+.page-inner strong{
+    background: #fc9758;
+    color: #fff;
+    font-weight: 400;
+    font: 14px arial;
+    white-space: nowrap;
+    width: 36px;
+    height: 36px;
+    border: 0;
+    border-radius: 6px;
+    margin-right: 6px;
+    margin-left: 6px;
+    text-align: center;
+    line-height: 34px;
+    overflow: hidden;
+    display: inline-block;
+}
+.page-inner .light{
+    background: #fff;
+    color: #ff6417;
+    font-weight: 400;
+    font: 14px arial;
+    white-space: nowrap;
+    width: 36px;
+    height: 36px;
+    border: 0;
+    border-radius: 6px;
+    margin-right: 6px;
+    margin-left: 6px;
+    text-align: center;
+    line-height: 34px;
+    overflow: hidden;
+    display: inline-block;
+}
+.page-inner .depart{
+    background: transparent;
+    color: #333;
+    font-weight: 400;
+    font: 14px arial;
+    white-space: nowrap;
+    width: 36px;
+    height: 36px;
+    border: 0;
+    border-radius: 6px;
+    text-align: center;
+    line-height: 34px;
+    overflow: hidden;
+    display: inline-block;
+}
+.page-inner form input{
+    width: 34px;
+    height: 34px;
+    border: none;
+    font-size: 16px;
+    outline: none;
+}

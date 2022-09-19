@@ -1,0 +1,45 @@
+.icp-title{
+    font-weight: 600;
+    box-sizing: border-box;
+}
+.ipc-title-text{
+    font-weight: 800;
+    display: flex;
+    border: none;
+    position: relative;
+    font-size: 1.6em;
+    align-self: center;
+    flex-shrink: 0;
+}
+.ipc-title-text:before{
+    background: #f5c518;
+    border-radius: 4px;
+    content: '';
+    margin-left: -.75rem;
+    align-self: flex-start;
+    position: absolute;
+    height: 105%;
+    top: -0.1em;
+    width: 4px;
+}
+.ipc-title-text .arow{
+    font-size: 0.8em;
+    margin-left: 0.5em;
+    align-self: center;
+    transition: color 0.15s;
+    flex-shrink: 0;
+    height: 1em;
+    vertical-align: baseline;
+    width: 1em;
+    fill: currentcolor;
+}
+.ipc-title-description{
+    font-size: 1.4rem;
+    line-height: 1.5rem;
+    font-weight: 400;
+    letter-spacing: .03125em;
+    border: none;
+    display: block;
+    padding-top: .25rem;
+    margin-left: -1rem;
+}

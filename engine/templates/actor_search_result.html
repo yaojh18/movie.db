@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+{% load m_filter %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="../static/styles/search.css">
+    <link rel="stylesheet" href="../static/styles/searchbar.css">
+    <link rel="stylesheet" href="../static/styles/pages.css">
+    <link rel="stylesheet" href="../static/styles/title.css">
+</head>
+<body>
+    <div id="header">
+        <div class="navbar">
+            <img class="navbar-left" src="../static/images/icon.png">
+            <div class="navbar-search">
+                <form action="search?" method="get" id="inp-form">
+                    <fieldset>
+                        <div style="display: flex">
+                            <div class="category">
+                                <select  name="type">
+                                    <option value="actor">演员</option>
+                                    <option value="movie">电影</option>
+                                    <option value="comment">影评</option>
+                                </select>
+                            </div>
+                            <div class="inp">
+                                <input name="search_text" maxlength="60" placeholder="搜索电影、演员、影评" value autocomplete='off' size="40">
+                            </div>
+                            <div class="inp-btn">
+                                <input type="submit" value="">
+                            </div>
+                        </div>
+                    </fieldset>
+                </form>
+            </div>
+            <ul class="narbar-right">
+                <li>
+                    <a class="" href="display?type=movie">电影</a>
+                </li>
+                <li>
+                    <a class="active" href="display?type=actor">演员</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div align="center">
+        <div class="nsearch_color">&nbsp;</div>
+        <div class="nsearch_mid" align="left">
+            <div class="nsearch_con">
+                <div class="nsearch_tab">
+                    <div class="ipc-title">
+                        <h3 class="ipc-title-text">&nbsp 搜索结果
+                            <svg width="24" height="24" class="arow" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M5.622.631A2.153 2.153 0 0 0 5 2.147c0 .568.224 1.113.622 1.515l8.249 8.34-8.25 8.34a2.16 2.16 0 0 0-.548 2.07c.196.74.768 1.317 1.499 1.515a2.104 2.104 0 0 0 2.048-.555l9.758-9.866a2.153 2.153 0 0 0 0-3.03L8.62.61C7.812-.207 6.45-.207 5.622.63z"></path>
+                            </svg>
+                        </h3>
+                        <div class="ipc-title-description">共找到{{ search_num }}条结果,搜索用时:{{ search_time }}s</div>
+                    </div>
+                </div>
+                <div class="main">
+                    <ul class="other_list">
+                        {% for item in objects %}
+                        <li class="clickobj">
+                            <div class="filmscore">
+                                <b>No.</b>
+                                <p>{{ forloop.counter }}</p>
+                            </div>
+                            <h3>
+                                <a class="colored" href="detail?type=actor&id={{ item.id }}">
+                                    {{ item.name }}
+                                </a>
+                            </h3>
+                            <div class="other_mid">
+                                <a class="pic " href="detail?type=actor&id={{ item.id }}">
+                                    {% if item.has_img %}
+                                        <img src="../static/images/actor_pics/{{ item.id }}.jpg" width="96px" height="128px">
+                                    {% else %}
+                                        <img src="../static/images/actor_pics/0.jpg" width="96px" height="128px">
+                                    {% endif %}
+                                </a>
+                                <div class="other_txt">
+                                    <div class="important">
+                                        <p>职业： {{ item.occupation|replace_comma }}</p>
+                                        <p>性别： {{ item.gender|replace_comma }}</p>
+                                        <p style="display: inline">参演电影：</p>
+                                        <div style="display: inline-grid;grid-template-columns: repeat(auto-fill, 150px);width: 450px">
+                                            {% for sub_item in item.movies.all %}
+                                                <a class="colored" href="detail?type=movie&id={{ sub_item.id }}">{{ sub_item.title }}</a>
+                                            {% endfor %}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div id="page" >
+            <div class="page-inner">
+                {% if results.has_previous %}
+                    <a href="search?type={{ type }}&search_text={{ search_text }}&page={{ results.previous_page_number }}" class="light">&lt</a>
+                {% else %}
+                    <strong>&lt</strong>
+                {% endif %}
+                {% if 1 not in pageRange%}
+                    <a href="search?type={{ type }}&search_text={{ search_text }}&page=1" class="light">1</a>
+                    <span class = "depart">▪••</span>
+                {% endif %}
+                {% for i in pageRange %}
+                    {% if page == i %}
+                        <strong>{{ i }}</strong>
+                    {% else %}
+                        <a href="search?type={{ type }}&search_text={{ search_text }}&page={{ i }}" class="light">{{ i }}</a>
+                    {% endif %}
+                {% endfor %}
+                {% if paginator.num_pages not in pageRange%}
+                    <span class = "depart">▪••</span>
+                    <a href="search?type={{ type }}&search_text={{ search_text }}&page={{ paginator.num_pages }}" class="light">{{ paginator.num_pages }}</a>
+                {% endif %}
+                {% if results.has_next %}
+                    <a href="search?type={{ type }}&search_text={{ search_text }}&page={{ results.next_page_number }}" class="light">&gt</a>
+                {% else %}
+                    <strong>&gt</strong>
+                {% endif %}
+                <span class = "depart">跳至</span>
+                <form class="depart" method="get" action="" id="page_form">
+                    <input name="type" style="display: none" id="page_type">
+                    <input name="search_text" style="display: none" id="page_search_text">
+                    <input name="page" maxlength="3" value autocomplete='off' onkeydown="_submit()">
+                    <script>
+                        function _submit(){
+                            if (event.keyCode == 13){
+                                document.getElementById("page_type").value = "{{ type }}"
+                                document.getElementById("page_search_text").value = "{{ search_text }}"
+                                document.getElementById("page_form").submit()
+                            }
+                        }
+                    </script>
+                </form>
+                <span class = "depart">页</span>
+            </div>
+        </div>
+    </div>
+    <script>
+        let replacement = "<span class='edit_color'>{{ search_text }}</span>"
+        let title_list = document.getElementsByClassName("colored")
+        for (let i = 0; i < title_list.length; i++){
+            let title = title_list[i].innerHTML
+            title = title.split("{{ search_text }}").join(replacement)
+            title_list[i].innerHTML = title
+        }
+    </script>
+</body>
+</html>

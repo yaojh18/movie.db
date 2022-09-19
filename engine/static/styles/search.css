@@ -1,0 +1,195 @@
+.nsearch_color {
+    height: 465px;
+    background-color: #fff3cb;
+    background-position: center top;
+    background-repeat: no-repeat;
+}
+.nsearch_mid {
+    width: 1012px;
+    position: relative;
+    margin-top: -365px;
+}
+.nsearch_con{
+    width: 1000px;
+    padding: 0 0 20px 0;
+    background: #fff;
+    min-height: 600px;
+    margin: auto;
+}
+.main{
+    padding: 20px 0 0;
+    display: block;
+    width: 800px;
+}
+.other_list {
+    border-bottom: 1px solid #f3f3f3;
+    margin: 0 0 30px 0;
+    display: block;
+}
+.other_list li {
+    padding-left: 90px;
+    position: relative;
+    margin-bottom: 20px;
+    list-style: none;
+    height: 240px;
+    border-bottom: 1px dotted #999;
+}
+.filmscore{
+    position: absolute;
+    left: 20px;
+    top: 5px;
+    width: 55px;
+    height: 55px;
+    text-align: center;
+    background: #679c21;
+    color: #fff;
+}
+.filmscore b {
+    padding: 4px 0 0;
+    font-weight: normal;
+    font-size: 12px;
+    display: inline-block;
+
+}
+.filmscore p {
+    font-size: 26px;
+    font-weight: bold;
+    line-height: 1.2;
+    margin: 0;
+}
+.other_list h3 {
+    font-size: 20px;
+    line-height: 20px;
+    font-weight: bold;
+    padding: 5px 0 5px 0;
+    margin: 5px 0 5px 0;
+    background: #fff;
+}
+.other_list h3 a {
+    color: black;
+    margin: 0 0 0 0;
+    display: inline-block;
+    vertical-align: middle;
+    text-decoration: none;
+    font-size: 22px;
+    line-height: 1.4em;
+}
+.other_list h3 a:hover, .other_txt a:hover{
+    text-decoration: underline;
+}
+.edit_color {
+    color: #bf1200;
+}
+.other_mid{
+    display: block;
+}
+.other_mid .pic {
+    overflow: hidden;
+    float: left;
+    display: inline;
+}
+.other_mid .pic img {
+    vertical-align: top;
+    border: 1px solid #c4c4c4;
+}
+.other_mid .other_txt {
+    margin-left: 10px;
+    float: left;
+    display: inline;
+    font-size: 16px;
+    line-height: 1.5em;
+    color: #999;
+}
+.other_mid p{
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+.other_mid a{
+    text-decoration: none;
+    color: #aa009a;
+}
+.other_mid .other_txt .important p a {
+    margin-right: 10px;
+    color: #333;
+}
+.nsearch_tab {
+    border-bottom: 1px solid #dedede;
+    padding: 10px 25px 0;
+    position: relative;
+    text-align: left;
+    z-index: 0;
+    height: 100px;
+    font-size: 12px;
+}
+.nsearch_tab .ipc-title-description{
+    font-size: 13px;
+    margin-left: 10px;
+}
+.nsearch_more {
+    line-height: 35px;
+    height: 35px;
+    display: inline-block;
+    vertical-align: middle;
+    font-size: 14px;
+    color: #333;
+    text-decoration: none;
+}
+.nsearch_more i {
+    font-weight: bold;
+    font-style: normal
+}
+.longcombox {
+    padding-bottom: 15px;
+}
+.longcombox dt {
+    position: absolute;
+    color: #fff;
+    left: 20px;
+    top: 5px;
+    width: 55px;
+    height: 55px;
+    text-align: center;
+    background: #679c21;
+}
+.longcombox dt p {
+    display: block;
+    font-size: 26px;
+    font-weight: bold;
+    line-height: 1.2;
+    margin: 0;
+}
+.longcombox dt b {
+    line-height: 1.2;
+    margin: 0;
+    font-weight: normal;
+    font-size: 12px;
+    display: inline-block;
+}
+.longcombox dd {
+    display: block;
+    margin-inline-start: 20px;
+}
+.longcombox a{
+    color: inherit;
+    text-decoration: none;
+}
+.longcombox a:hover{
+    text-decoration: underline;
+}
+.longcombox h3{
+    font-size: 22px;
+    line-height: 1.4em;
+}
+.longcombox .comboxcont {
+    font-size: 16px;
+    line-height: 1.5em;
+    color: #999;
+}
+.longcombox dl {
+    position: relative;
+    zoom: 1;
+    margin: 35px 20px 0;
+    padding-left: 85px;
+    padding-bottom: 25px;
+    border-bottom: 1px dotted #999;
+}

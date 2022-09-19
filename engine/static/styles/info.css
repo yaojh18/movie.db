@@ -1,0 +1,228 @@
+.page{
+    background: #fff3cb;
+    position: relative;
+    padding: 17px 0 0;
+    z-index: 2;
+    display: block;
+}
+.info{
+    float: left;
+    display: inline;
+    width: 560px;
+    margin-left: 6px;
+    margin-top: 20px;
+    font: 16px/150% helvetica,"微软雅黑","microsoft yahei",verdana,lucida,arial,sans-serif,"黑体";
+    color: #333;
+
+}
+.info dd{
+    position: relative;
+    border-bottom: 1px dotted #999;
+    margin: 9px 0 9px 20px;
+    width: 100%;
+    line-height: 1.8em;
+    font-size: 14px;
+    overflow: hidden;
+}
+.info strong, .list-group span{
+    font-size: 16px;
+    line-height: 2em;
+}
+.info a ,.info span{
+    margin-right: 10px;
+}
+.info a{
+    color: #874100;
+}
+#db_head {
+    background-position: center 0;
+    position: relative;
+    z-index: 9;
+}
+.db_coverout {
+    position: relative;
+    height: 0;
+    width: 1000px;
+    margin: 0 auto;
+}
+.db_coverinner {
+    position: absolute;
+    left: 15px;
+    top: 15px;
+}
+.db_coverpicbox {
+    background: #f9f9fa;
+    border: 1px solid #d5d5d5;
+    border-radius: 10px;
+    box-shadow: 0 0 10px #999;
+    padding: 10px;
+}
+.db_cover {
+    background: #000;
+    text-align: center;
+    position: relative;
+    zoom: 1;
+    overflow: hidden;
+    width: 270px;
+    min-height: 275px;
+    border-radius: 6px;
+    border: 1px solid #000;
+}
+.db_cover img {
+    color: #08c;
+    width: 270px;
+    max-height: 405px;
+}
+.db_ihead {
+    width: 660px;
+    padding-left: 180px;
+    margin: 0 auto;
+}
+.db_head {
+    width: 1000px;
+    margin: 0 auto;
+    position: relative;
+    padding-top: 30px;
+    padding-bottom: 25px;
+    z-index: 5;
+}
+.clearfix{
+    display: block;
+}
+.db_head h1{
+    display: inline;
+    position: relative;
+    line-height: 1.2em;
+    color: #333;
+}
+.db_year{
+    display: inline-block;
+    position: relative;
+    font-weight: normal;
+    font-size: 30px;
+    color: #333;
+    line-height: 1em;
+}
+
+.db_head .db_enname{
+    margin-top: 8px;
+    margin-left: 0;
+    color: #333;
+    font-size: 25px;
+    line-height: 1.2em;
+}
+.db_head .otherbox {
+    background: #444;
+    display: inline-block;
+    color: #fff;
+    font-size: 16px;
+    line-height: 26px;
+    margin-top: 15px;
+    padding: 0 10px;
+    border-radius: 3px;
+    position: relative;
+}
+.news_area {
+    padding: 15px 0 8px;
+    margin-top: 30px;
+    position: relative;
+    z-index: 1;
+}
+.grade_tool .gradebox {
+    background: #679c21;
+    width: 80px;
+    height: 80px;
+    position: absolute;
+    top: 6px;
+    color: #fff;
+    text-align: center;
+    font-size: 12px;
+}
+.news_area .gradebox b {
+    padding: 0;
+    width: 45px;
+    height: 45px;
+    margin: 5px auto 3px;
+    text-align: left;
+    font-size: 45px;
+    line-height: 1.2em;
+    letter-spacing: 0;
+    position: relative;
+    zoom: 1;
+    font-weight: bold;
+    display: block;
+}
+.news_area .gradebox p {
+    display: block;
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+}
+.news_area .gradebox b sup {
+    font-size: 24px;
+    line-height: 24px;
+    position: absolute;
+    top: 6px;
+    right: 0;
+    vertical-align: top;
+}
+.base_r {
+    margin-left: 100px;
+    position: relative;
+    z-index: 1;
+}
+.longcombox {
+    padding-bottom: 15px;
+}
+.longcombox dt {
+    background: #ff9600;
+    width: 67px;
+    height: 79px;
+    position: absolute;
+    left: 0;
+    top: 0;
+    padding: 6px 8px 0 0;
+    font-size: 18px;
+    line-height: 1.2em;
+    color: #fff;
+    text-align: right;
+}
+.longcombox dt strong {
+    display: block;
+    margin-right: 5px;
+    font-size: 45px;
+    line-height: 1em;
+    font-weight: bold;
+}
+.longcombox dd {
+    display: block;
+    margin-inline-start: 20px;
+}
+.longcombox h3 {
+    font-size: 22px;
+    line-height: 1.4em;
+}
+.longcombox .comboxcont {
+    font-size: 16px;
+    line-height: 1.5em;
+    color: #999;
+}
+.longcombox dl {
+    position: relative;
+    zoom: 1;
+    margin: 35px 20px 0;
+    padding-left: 85px;
+    padding-bottom: 25px;
+    border-bottom: 1px dotted #999;
+}
+.panel-body .summary{
+    position: relative;
+    padding: 8px 8px 8px 8px;
+    border-bottom: 1px dotted #999;
+    border-top: 1px dotted #999;
+    margin: 9px 20px 9px 20px;
+    line-height: 1.8em;
+    font-size: 14px;
+    overflow: hidden;
+}
